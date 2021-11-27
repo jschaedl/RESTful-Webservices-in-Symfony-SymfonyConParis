@@ -1,0 +1,11 @@
+App\Entity\Workshop:
+    workshop_1:
+        __construct: [ '775ead00-7f50-466f-b89d-73150c9adfc8', 'a', <(new \DateTimeImmutable('2021-12-07'))> ]
+    workshop_2:
+        __construct: [ '8b84bf4a-a8e9-436a-85ce-2f5df8f8a3a2', 'b', <(new \DateTimeImmutable('2021-12-07'))> ]
+    workshop_3:
+        __construct: [ '531b95c9-05c5-49ac-98ec-e0263f35d83e', 'c', <(new \DateTimeImmutable('2021-12-07'))> ]
+    workshop_4:
+        __construct: [ 'd0e2cbfd-eff0-4025-90fb-3350aada0939', 'd', <(new \DateTimeImmutable('2021-12-07'))> ]
+    workshop_5:
+        __construct: [ '9aa6e731-6058-4f2c-9081-aadeb15db35e', 'e', <(new \DateTimeImmutable('2021-12-07'))> ]

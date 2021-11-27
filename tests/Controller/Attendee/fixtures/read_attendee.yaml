@@ -7,3 +7,5 @@ App\Entity\Workshop:
 App\Entity\Attendee:
     attendee_1:
         __construct: [ '17058af8-1b0f-4afe-910d-669b4bd0fd26', 'Jan', 'Schädlich', 'jschadlich@eos-uptrade.de' ]
+        __calls:
+            - addWorkshop: [ '@workshop_1' ]

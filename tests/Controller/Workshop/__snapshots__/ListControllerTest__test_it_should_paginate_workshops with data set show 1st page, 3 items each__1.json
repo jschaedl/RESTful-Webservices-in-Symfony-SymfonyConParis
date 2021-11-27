@@ -1,0 +1,24 @@
+{
+    "items": [
+        {
+            "identifier": "775ead00-7f50-466f-b89d-73150c9adfc8",
+            "title": "a",
+            "workshop_date": "2021-12-07",
+            "attendees": []
+        },
+        {
+            "identifier": "8b84bf4a-a8e9-436a-85ce-2f5df8f8a3a2",
+            "title": "b",
+            "workshop_date": "2021-12-07",
+            "attendees": []
+        },
+        {
+            "identifier": "531b95c9-05c5-49ac-98ec-e0263f35d83e",
+            "title": "c",
+            "workshop_date": "2021-12-07",
+            "attendees": []
+        }
+    ],
+    "total": 5,
+    "count": 3
+}
