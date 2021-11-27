@@ -1,6 +1,6 @@
 App\Entity\Attendee:
     attendee_1:
-        __construct: [ 'f6ac0c74-ca77-4b3b-9829-8c0cfe29cf44', 'Jan', 'Schädlich', 'jan.schadlich@siemens.com' ]
+        __construct: [ 'f6ac0c74-ca77-4b3b-9829-8c0cfe29cf44', 'Jan', 'Schädlich', 'Jan Schädlich', 'jan.schadlich@siemens.com' ]
 
 App\Entity\Workshop:
     workshop_1:
