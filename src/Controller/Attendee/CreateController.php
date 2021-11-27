@@ -6,6 +6,8 @@ namespace App\Controller\Attendee;
 
 use App\Domain\AttendeeCreator;
 use App\Domain\Model\CreateAttendeeModel;
+use Nelmio\ApiDocBundle\Annotation\Model;
+use OpenApi\Annotations as OA;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,6 +26,20 @@ final class CreateController
     ) {
     }
 
+    /**
+     * @OA\Post(
+     *     tags={"Attendee"},
+     *     summary="Creates an attendee.",
+     *     description="Creates an attendee.",
+     *     @OA\RequestBody(
+     *          @Model(type=CreateAttendeeModel::class)
+     *     ),
+     *     @OA\Response(
+     *          description="Returns the created attendee.",
+     *          response=201
+     *     )
+     * )
+     */
     public function __invoke(Request $request, CreateAttendeeModel $createAttendeeModel)
     {
         $createdAttendee = $this->attendeeCreator->create($createAttendeeModel);
