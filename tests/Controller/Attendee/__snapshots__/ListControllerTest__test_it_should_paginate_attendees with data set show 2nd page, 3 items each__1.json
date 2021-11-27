@@ -4,6 +4,7 @@
             "identifier": "65445e8c-a6c6-4955-9eb2-5fb60d6a991e",
             "firstname": "d",
             "lastname": "4",
+            "name": "d4",
             "email": "d4@test.de",
             "workshops": []
         },
@@ -11,6 +12,7 @@
             "identifier": "3aacd688-5b81-4aba-a5ea-ac7668ba95b6",
             "firstname": "e",
             "lastname": "5",
+            "name": "e5",
             "email": "e5@test.de",
             "workshops": []
         }

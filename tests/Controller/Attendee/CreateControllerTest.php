@@ -36,8 +36,7 @@ EOT
 
         /** @var Attendee $expectedAttendee */
         $expectedAttendee = $attendeesAfter[0];
-        static::assertSame('Paul', $expectedAttendee->getFirstname());
-        static::assertSame('Paulsen', $expectedAttendee->getLastname());
+        static::assertSame('Paul Paulsen', $expectedAttendee->getName());
         static::assertSame('paul@paulsen.de', $expectedAttendee->getEmail());
     }
 
@@ -59,9 +58,9 @@ EOT
         yield 'empty data' => ['{}'];
         yield 'wrong json one' => ['{'];
         yield 'wrong json two' => ['}'];
-        yield 'missing firstname' => ['{"lastname": "Paulsen", "email": "paul@paulsen.de"}'];
-        yield 'missing lastname' => ['{"firstname": "Paul", "email": "paul@paulsen.de"}'];
-        yield 'missing email' => ['{"firstname": "Paul", "lastname": "Paulsen"}'];
-        yield 'wrong email' => ['{"firstname": "Paul", "lastname": "Paulsen", "email": "paulpaulsende"}'];
+        yield 'missing firstname and missing name' => ['{"lastname": "Paulsen", "email": "paul@paulsen.de"}'];
+        yield 'missing lastname and missing name' => ['{"firstname": "Paul", "email": "paul@paulsen.de"}'];
+        yield 'missing email' => ['{"name": "Paul Paulsen"}'];
+        yield 'wrong email' => ['{"name": "Paul Paulsen", "email": "paulpaulsende"}'];
     }
 }

@@ -20,8 +20,9 @@ final class AttendeeCreator
     {
         $newAttendee = new Attendee(
             Uuid::uuid4()->toString(),
-            $createAttendeeModel->firstname,
-            $createAttendeeModel->lastname,
+            $createAttendeeModel->firstname ?? '',
+            $createAttendeeModel->lastname ?? '',
+            $createAttendeeModel->name ?? '',
             $createAttendeeModel->email,
         );
 
