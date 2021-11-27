@@ -40,4 +40,31 @@ EOT
         static::assertSame('Paulsen', $expectedAttendee->getLastname());
         static::assertSame('paul@paulsen.de', $expectedAttendee->getEmail());
     }
+
+    /**
+     * @dataProvider provideUnprocessableAttendeeData
+     */
+    public function test_it_should_throw_an_UnprocessableEntityHttpException(string $requestBody): void
+    {
+        $this->loadFixtures([
+            __DIR__.'/fixtures/update_attendee.yaml',
+        ]);
+
+        $attendeesBefore = static::getContainer()->get(AttendeeRepository::class)->findAll();
+        static::assertCount(1, $attendeesBefore);
+
+        $this->browser->request('PUT', '/attendees/b38aa3e4-f9de-4dca-aaeb-3ec36a9feb6c', [], [], [], $requestBody);
+
+        static::assertResponseStatusCodeSame(422);
+        static::assertStringContainsString(
+            'UnprocessableEntityHttpException',
+            $this->browser->getResponse()->getContent()
+        );
+    }
+
+    public function provideUnprocessableAttendeeData(): \Generator
+    {
+        yield 'no data' => [''];
+        yield 'wrong email' => ['{"email": "paulpaulsende"}'];
+    }
 }
