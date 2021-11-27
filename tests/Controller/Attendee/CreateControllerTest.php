@@ -15,7 +15,9 @@ class CreateControllerTest extends ApiTestCase
         $attendeesBefore = static::getContainer()->get(AttendeeRepository::class)->findAll();
         static::assertCount(0, $attendeesBefore);
 
-        $this->browser->request('POST', '/attendees', [], [], [],
+        $this->browser->request('POST', '/attendees', [], [], [
+            'HTTP_Authorization' => 'Bearer '.$this->getUserToken(),
+        ],
             <<<'EOT'
 {
     "firstname": "Paul",
@@ -44,7 +46,7 @@ EOT
      */
     public function test_it_should_return_proper_errors(string $requestBody): void
     {
-        $this->browser->request('POST', '/attendees', [], [], [], $requestBody);
+        $this->browser->request('POST', '/attendees', [], [], ['HTTP_Authorization' => 'Bearer '.$this->getUserToken()], $requestBody);
 
         static::assertResponseStatusCodeSame(422);
 

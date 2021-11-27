@@ -20,7 +20,9 @@ class AddAttendeeToWorkshopControllerTest extends ApiTestCase
         $workshop = static::getContainer()->get(WorkshopRepository::class)->findOneByIdentifier('e5444459-db7f-42a8-9a93-7925d4ffd1dc');
         static::assertCount(0, $workshop->getAttendees());
 
-        $this->browser->request('POST', '/workshops/e5444459-db7f-42a8-9a93-7925d4ffd1dc/attendees/add/e9a95edb-9b49-42f4-bf2d-7206fd65bc94', [], [], []);
+        $this->browser->request('POST', '/workshops/e5444459-db7f-42a8-9a93-7925d4ffd1dc/attendees/add/e9a95edb-9b49-42f4-bf2d-7206fd65bc94', [], [], [
+            'HTTP_Authorization' => 'Bearer '.$this->getAdminToken(),
+        ]);
 
         static::assertResponseStatusCodeSame(204);
 

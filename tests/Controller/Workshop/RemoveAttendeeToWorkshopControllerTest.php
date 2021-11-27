@@ -20,7 +20,9 @@ class RemoveAttendeeToWorkshopControllerTest extends ApiTestCase
         $workshop = static::getContainer()->get(WorkshopRepository::class)->findOneByIdentifier('667731df-0a66-4030-9589-e8ab850a209b');
         static::assertCount(1, $workshop->getAttendees());
 
-        $this->browser->request('POST', '/workshops/667731df-0a66-4030-9589-e8ab850a209b/attendees/remove/f6ac0c74-ca77-4b3b-9829-8c0cfe29cf44', [], [], []);
+        $this->browser->request('POST', '/workshops/667731df-0a66-4030-9589-e8ab850a209b/attendees/remove/f6ac0c74-ca77-4b3b-9829-8c0cfe29cf44', [], [], [
+            'HTTP_Authorization' => 'Bearer '.$this->getAdminToken(),
+        ]);
 
         static::assertResponseStatusCodeSame(204);
 

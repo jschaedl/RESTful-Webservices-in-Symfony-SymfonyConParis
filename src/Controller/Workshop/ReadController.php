@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace App\Controller\Workshop;
 
 use App\Entity\Workshop;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
+#[IsGranted('ROLE_USER')]
 #[Route('/workshops/{identifier}', name: 'read_workshop', methods: ['GET'])]
 final class ReadController
 {

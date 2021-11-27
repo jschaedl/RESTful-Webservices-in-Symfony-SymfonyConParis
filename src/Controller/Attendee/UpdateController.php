@@ -7,10 +7,12 @@ namespace App\Controller\Attendee;
 use App\Domain\AttendeeUpdater;
 use App\Domain\Model\UpdateAttendeeModel;
 use App\Entity\Attendee;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[IsGranted('ROLE_USER')]
 #[Route('/attendees/{identifier}', name: 'update_attendee', methods: ['PUT'])]
 final class UpdateController
 {

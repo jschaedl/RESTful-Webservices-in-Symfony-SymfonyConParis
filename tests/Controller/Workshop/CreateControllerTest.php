@@ -15,7 +15,7 @@ class CreateControllerTest extends ApiTestCase
         $workshopsBefore = static::getContainer()->get(WorkshopRepository::class)->findAll();
         static::assertCount(0, $workshopsBefore);
 
-        $this->browser->request('POST', '/workshops', [], [], [],
+        $this->browser->request('POST', '/workshops', [], [], ['HTTP_Authorization' => 'Bearer '.$this->getUserToken()],
             <<<'EOT'
 {
     "title": "Test Workshop",
@@ -42,7 +42,7 @@ EOT
      */
     public function test_it_should_return_proper_errors(string $requestBody): void
     {
-        $this->browser->request('POST', '/workshops', [], [], [], $requestBody);
+        $this->browser->request('POST', '/workshops', [], [], ['HTTP_Authorization' => 'Bearer '.$this->getUserToken()], $requestBody);
 
         static::assertResponseStatusCodeSame(422);
 

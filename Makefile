@@ -12,6 +12,7 @@ dev-init:                                                                      #
 	$(SYMFONY_CMD) doctrine:database:create
 	$(SYMFONY_CMD) doctrine:schema:create
 	$(SYMFONY_CMD) hautelook:fixtures:load -n --no-bundles
+	$(SYMFONY_CMD) lexik:jwt:generate-keypair --overwrite -q
 
 fixtures:                                                                      ## load fixtures
 	$(SYMFONY_CMD) hautelook:fixtures:load -n -vvv --no-bundles
