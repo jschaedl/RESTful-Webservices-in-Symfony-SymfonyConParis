@@ -1,0 +1,12 @@
+{
+    "errors": [
+        {
+            "message": "Validation failed.",
+            "detail": "title: This value should not be blank."
+        },
+        {
+            "message": "Validation failed.",
+            "detail": "workshopDate: This value should not be blank."
+        }
+    ]
+}

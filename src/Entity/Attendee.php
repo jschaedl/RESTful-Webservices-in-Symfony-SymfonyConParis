@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Domain\Exception\AttendeeAlreadyAttendsOtherWorkshopOnThatDateException;
+use App\Domain\Exception\AttendeeLimitReachedException;
 use App\Repository\AttendeeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -104,9 +106,19 @@ class Attendee
 
     public function addWorkshop(Workshop $workshop): self
     {
-        if (!$this->workshops->contains($workshop)) {
-            $this->workshops[] = $workshop;
+        if ($this->workshops->contains($workshop)) {
+            return $this;
         }
+
+        if (!$this->canAttend($workshop)) {
+            throw new AttendeeAlreadyAttendsOtherWorkshopOnThatDateException();
+        }
+
+        if (25 <= count($workshop->getAttendees())) {
+            throw new AttendeeLimitReachedException();
+        }
+
+        $this->workshops[] = $workshop;
 
         return $this;
     }
@@ -133,5 +145,19 @@ class Attendee
     public function updateEmail(string $email)
     {
         $this->email = $email;
+    }
+
+    /**
+     * Every Attendee can only attend one workshop per day.
+     */
+    public function canAttend(Workshop $workshop): bool
+    {
+        foreach ($this->getWorkshops() as $attendeeWorkshop) {
+            if ($workshop->getWorkshopDate()->getTimestamp() === $attendeeWorkshop->getWorkshopDate()->getTimestamp()) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

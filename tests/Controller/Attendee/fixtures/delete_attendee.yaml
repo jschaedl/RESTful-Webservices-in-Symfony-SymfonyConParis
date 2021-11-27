@@ -1,0 +1,3 @@
+App\Entity\Attendee:
+    attendee_1:
+        __construct: [ 'bb5cb8a8-0df8-404f-a3f3-54ee5c9cf855', 'Jan', 'Schädlich', 'jan.schadlich@siemens.com' ]

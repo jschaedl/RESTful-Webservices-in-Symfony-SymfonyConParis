@@ -1,0 +1,8 @@
+{
+    "errors": [
+        {
+            "message": "Validation failed.",
+            "detail": "workshopDate: This value is not a valid date."
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "errors": [
+        {
+            "message": "Encoding failed.",
+            "detail": "Syntax error"
+        }
+    ]
+}
