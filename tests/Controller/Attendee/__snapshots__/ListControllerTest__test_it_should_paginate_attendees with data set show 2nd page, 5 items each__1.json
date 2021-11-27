@@ -1,13 +1,5 @@
 {
     "items": [],
     "total": 5,
-    "count": 0,
-    "_links": {
-        "self": {
-            "href": "\/attendees?page=2&size=5"
-        },
-        "prev": {
-            "href": "\/attendees?page=1&size=5"
-        }
-    }
+    "count": 0
 }

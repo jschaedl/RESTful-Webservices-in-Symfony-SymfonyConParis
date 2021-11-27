@@ -8,13 +8,24 @@ use App\Tests\ApiTestCase;
 
 class ListControllerTest extends ApiTestCase
 {
-    public function test_it_should_list_all_workshops(): void
+    public function provideHttpAcceptHeaderValues(): \Generator
+    {
+        yield 'json' => ['application/json'];
+        yield 'hal+json' => ['application/hal+json'];
+    }
+
+    /**
+     * @dataProvider provideHttpAcceptHeaderValues
+     */
+    public function test_it_should_list_all_workshops(string $httpAcceptHeaderValue): void
     {
         $this->loadFixtures([
             __DIR__.'/fixtures/list_workshop.yaml',
         ]);
 
-        $this->browser->request('GET', '/workshops');
+        $this->browser->request('GET', '/workshops', [], [], [
+            'HTTP_ACCEPT' => $httpAcceptHeaderValue,
+        ]);
 
         static::assertResponseIsSuccessful();
 
@@ -30,7 +41,7 @@ class ListControllerTest extends ApiTestCase
             __DIR__.'/fixtures/paginate_workshop.yaml',
         ]);
 
-        $this->browser->request('GET', sprintf('/workshops?page=%d&size=%d', $page, $size));
+        $this->browser->request('GET', sprintf('/workshops?page=%d&size=%d', $page, $size), [], []);
 
         static::assertResponseIsSuccessful();
 

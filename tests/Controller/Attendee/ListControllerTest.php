@@ -8,13 +8,24 @@ use App\Tests\ApiTestCase;
 
 class ListControllerTest extends ApiTestCase
 {
-    public function test_it_should_list_all_attendees(): void
+    public function provideHttpAcceptHeaderValues(): \Generator
+    {
+        yield 'json' => ['application/json'];
+        yield 'hal+json' => ['application/hal+json'];
+    }
+
+    /**
+     * @dataProvider provideHttpAcceptHeaderValues
+     */
+    public function test_it_should_list_all_attendees(string $httpAcceptHeaderValue): void
     {
         $this->loadFixtures([
             __DIR__.'/fixtures/list_attendee.yaml',
         ]);
 
-        $this->browser->request('GET', '/attendees');
+        $this->browser->request('GET', '/attendees', [], [], [
+            'HTTP_ACCEPT' => $httpAcceptHeaderValue,
+        ]);
 
         static::assertResponseIsSuccessful();
 
@@ -30,7 +41,7 @@ class ListControllerTest extends ApiTestCase
             __DIR__.'/fixtures/paginate_attendee.yaml',
         ]);
 
-        $this->browser->request('GET', sprintf('/attendees?page=%d&size=%d', $page, $size));
+        $this->browser->request('GET', sprintf('/attendees?page=%d&size=%d', $page, $size), [], []);
 
         static::assertResponseIsSuccessful();
 

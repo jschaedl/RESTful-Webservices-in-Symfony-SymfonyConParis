@@ -44,8 +44,8 @@ final class PaginatedCollection
     }
 
     #[SerializedName('_links')]
-    public function getLinks(): array
+    public function getLinks(): ?array
     {
-        return $this->links ?? [];
+        return $this->links;
     }
 }
