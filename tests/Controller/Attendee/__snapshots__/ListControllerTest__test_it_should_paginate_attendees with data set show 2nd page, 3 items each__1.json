@@ -5,16 +5,46 @@
             "firstname": "d",
             "lastname": "4",
             "email": "d4@test.de",
-            "workshops": []
+            "workshops": [],
+            "_links": {
+                "self": {
+                    "href": "\/attendees\/65445e8c-a6c6-4955-9eb2-5fb60d6a991e"
+                },
+                "collection": {
+                    "href": "\/attendees"
+                }
+            }
         },
         {
             "identifier": "3aacd688-5b81-4aba-a5ea-ac7668ba95b6",
             "firstname": "e",
             "lastname": "5",
             "email": "e5@test.de",
-            "workshops": []
+            "workshops": [],
+            "_links": {
+                "self": {
+                    "href": "\/attendees\/3aacd688-5b81-4aba-a5ea-ac7668ba95b6"
+                },
+                "collection": {
+                    "href": "\/attendees"
+                }
+            }
         }
     ],
     "total": 5,
-    "count": 2
+    "count": 2,
+    "_links": {
+        "self": {
+            "href": "\/attendees?page=2&size=3"
+        },
+        "first": {
+            "href": "\/attendees?page=1&size=3"
+        },
+        "last": {
+            "href": "\/attendees?page=2&size=3"
+        },
+        "prev": {
+            "href": "\/attendees?page=1&size=3"
+        }
+    }
 }

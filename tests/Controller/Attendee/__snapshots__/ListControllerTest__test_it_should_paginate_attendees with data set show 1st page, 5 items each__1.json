@@ -5,37 +5,82 @@
             "firstname": "a",
             "lastname": "1",
             "email": "a1@test.de",
-            "workshops": []
+            "workshops": [],
+            "_links": {
+                "self": {
+                    "href": "\/attendees\/4878f198-36ab-4fe3-8189-19662a9764fa"
+                },
+                "collection": {
+                    "href": "\/attendees"
+                }
+            }
         },
         {
             "identifier": "e942ce16-27c2-494f-9d93-03412da980c5",
             "firstname": "b",
             "lastname": "2",
             "email": "b2@test.de",
-            "workshops": []
+            "workshops": [],
+            "_links": {
+                "self": {
+                    "href": "\/attendees\/e942ce16-27c2-494f-9d93-03412da980c5"
+                },
+                "collection": {
+                    "href": "\/attendees"
+                }
+            }
         },
         {
             "identifier": "4714fb8a-83d8-49af-abbf-7c68fc6c9656",
             "firstname": "c",
             "lastname": "3",
             "email": "c3@test.de",
-            "workshops": []
+            "workshops": [],
+            "_links": {
+                "self": {
+                    "href": "\/attendees\/4714fb8a-83d8-49af-abbf-7c68fc6c9656"
+                },
+                "collection": {
+                    "href": "\/attendees"
+                }
+            }
         },
         {
             "identifier": "65445e8c-a6c6-4955-9eb2-5fb60d6a991e",
             "firstname": "d",
             "lastname": "4",
             "email": "d4@test.de",
-            "workshops": []
+            "workshops": [],
+            "_links": {
+                "self": {
+                    "href": "\/attendees\/65445e8c-a6c6-4955-9eb2-5fb60d6a991e"
+                },
+                "collection": {
+                    "href": "\/attendees"
+                }
+            }
         },
         {
             "identifier": "3aacd688-5b81-4aba-a5ea-ac7668ba95b6",
             "firstname": "e",
             "lastname": "5",
             "email": "e5@test.de",
-            "workshops": []
+            "workshops": [],
+            "_links": {
+                "self": {
+                    "href": "\/attendees\/3aacd688-5b81-4aba-a5ea-ac7668ba95b6"
+                },
+                "collection": {
+                    "href": "\/attendees"
+                }
+            }
         }
     ],
     "total": 5,
-    "count": 5
+    "count": 5,
+    "_links": {
+        "self": {
+            "href": "\/attendees?page=1&size=5"
+        }
+    }
 }
