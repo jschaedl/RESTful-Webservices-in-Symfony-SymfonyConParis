@@ -1,0 +1,16 @@
+{
+    "errors": [
+        {
+            "message": "Validation failed.",
+            "detail": "firstname: This value should not be blank."
+        },
+        {
+            "message": "Validation failed.",
+            "detail": "lastname: This value should not be blank."
+        },
+        {
+            "message": "Validation failed.",
+            "detail": "email: This value should not be blank."
+        }
+    ]
+}
