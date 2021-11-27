@@ -39,6 +39,6 @@ tests:                                                                         #
 	$(PHPUNIT_CMD)
 
 tests-update-snapshots:                                                        ## run tests and update snapshots
-	$(PHPUNIT_CMD) -d -update-snapshots
+	$(PHPUNIT_CMD) -d --update-snapshots
 
 .PHONY: help dev-init fixtures cache-clear lint-config lint-templates lint-container lint cs-check cs-fix qa tests tests-update-snapshots
