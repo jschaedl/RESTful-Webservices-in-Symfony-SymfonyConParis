@@ -1,0 +1,11 @@
+App\Entity\Workshop:
+    workshop_1:
+        __construct: [ 'f91a2edb-d125-4695-90ff-27d4f5154777', 'Symfony 5/6: the fast track', <(new \DateTimeImmutable('2022-06-14'))> ]
+    workshop_2:
+        __construct: [ '4283a359-3d19-448f-8b21-47b737f6a623', 'Knowing your state machines - Symfony Workflow', <(new \DateTimeImmutable('2022-06-14'))> ]
+    workshop_3:
+        __construct: [ 'f416ab5b-c8c9-4137-995b-0fdb6ed97942', 'RESTful Webservices in Symfony', <(new \DateTimeImmutable('2022-06-14'))> ]
+    workshop_4:
+        __construct: ['81dce324-c9be-4eec-804d-d0e4dcf37d6e', 'Profiling Symfony & PHP apps', <(new \DateTimeImmutable('2022-06-14'))> ]
+    workshop_5:
+        __construct: [ 'f4c91bf4-b309-4aae-b87e-a3098e3a87af', 'Test Driven Development The Right Way', <(new \DateTimeImmutable('2022-06-15'))> ]
