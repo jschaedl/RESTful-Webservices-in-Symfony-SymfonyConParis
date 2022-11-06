@@ -10,7 +10,23 @@
             "workshop_date": "2022-06-14",
             "attendees": [
                 "Jan Sch\u00e4dlich"
-            ]
+            ],
+            "_links": {
+                "self": {
+                    "href": "\/workshops\/12bc7c60-7f77-41e0-90eb-9996a64a3b14"
+                },
+                "collection": {
+                    "href": "\/workshops"
+                }
+            }
         }
-    ]
+    ],
+    "_links": {
+        "self": {
+            "href": "\/attendees\/17058af8-1b0f-4afe-910d-669b4bd0fd26"
+        },
+        "collection": {
+            "href": "\/attendees"
+        }
+    }
 }

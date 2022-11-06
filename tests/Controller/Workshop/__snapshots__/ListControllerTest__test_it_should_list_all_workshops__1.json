@@ -12,11 +12,32 @@
                     "email": "jschadlich@eos-uptrade.de",
                     "workshops": [
                         "RESTful Webservices in Symfony"
-                    ]
+                    ],
+                    "_links": {
+                        "self": {
+                            "href": "\/attendees\/2a451d60-2fef-437b-838e-10edb2ade8eb"
+                        },
+                        "collection": {
+                            "href": "\/attendees"
+                        }
+                    }
                 }
-            ]
+            ],
+            "_links": {
+                "self": {
+                    "href": "\/workshops\/ef6e13ef-f601-4e74-bae8-bdf8f41cd8db"
+                },
+                "collection": {
+                    "href": "\/workshops"
+                }
+            }
         }
     ],
     "total": 1,
-    "count": 1
+    "count": 1,
+    "_links": {
+        "self": {
+            "href": "\/workshops?page=1&size=10"
+        }
+    }
 }

@@ -4,15 +4,45 @@
             "identifier": "d0e2cbfd-eff0-4025-90fb-3350aada0939",
             "title": "d",
             "workshop_date": "2021-12-07",
-            "attendees": []
+            "attendees": [],
+            "_links": {
+                "self": {
+                    "href": "\/workshops\/d0e2cbfd-eff0-4025-90fb-3350aada0939"
+                },
+                "collection": {
+                    "href": "\/workshops"
+                }
+            }
         },
         {
             "identifier": "9aa6e731-6058-4f2c-9081-aadeb15db35e",
             "title": "e",
             "workshop_date": "2021-12-07",
-            "attendees": []
+            "attendees": [],
+            "_links": {
+                "self": {
+                    "href": "\/workshops\/9aa6e731-6058-4f2c-9081-aadeb15db35e"
+                },
+                "collection": {
+                    "href": "\/workshops"
+                }
+            }
         }
     ],
     "total": 5,
-    "count": 2
+    "count": 2,
+    "_links": {
+        "self": {
+            "href": "\/workshops?page=2&size=3"
+        },
+        "first": {
+            "href": "\/workshops?page=1&size=3"
+        },
+        "last": {
+            "href": "\/workshops?page=2&size=3"
+        },
+        "prev": {
+            "href": "\/workshops?page=1&size=3"
+        }
+    }
 }
