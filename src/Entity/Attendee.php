@@ -119,4 +119,19 @@ class Attendee
 
         return $this;
     }
+
+    public function updateFirstname(string $firstname)
+    {
+        $this->firstname = $firstname;
+    }
+
+    public function updateLastname(string $lastname)
+    {
+        $this->lastname = $lastname;
+    }
+
+    public function updateEmail(string $email)
+    {
+        $this->email = $email;
+    }
 }
