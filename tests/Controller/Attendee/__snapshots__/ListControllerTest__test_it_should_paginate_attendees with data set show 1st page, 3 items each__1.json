@@ -1,0 +1,27 @@
+{
+    "items": [
+        {
+            "identifier": "4878f198-36ab-4fe3-8189-19662a9764fa",
+            "firstname": "a",
+            "lastname": "1",
+            "email": "a1@test.de",
+            "workshops": []
+        },
+        {
+            "identifier": "e942ce16-27c2-494f-9d93-03412da980c5",
+            "firstname": "b",
+            "lastname": "2",
+            "email": "b2@test.de",
+            "workshops": []
+        },
+        {
+            "identifier": "4714fb8a-83d8-49af-abbf-7c68fc6c9656",
+            "firstname": "c",
+            "lastname": "3",
+            "email": "c3@test.de",
+            "workshops": []
+        }
+    ],
+    "total": 5,
+    "count": 3
+}

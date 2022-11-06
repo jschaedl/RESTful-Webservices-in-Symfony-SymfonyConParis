@@ -1,18 +1,22 @@
-[
-    {
-        "identifier": "803449f4-9a4c-4ecb-8ce4-cebc804fe70a",
-        "firstname": "Jan",
-        "lastname": "Sch\u00e4dlich",
-        "email": "jschadlich@eos-uptrade.de",
-        "workshops": [
-            {
-                "identifier": "abba667a-96ae-4f75-9b71-97819b682e8d",
-                "title": "RESTful Webservices in Symfony",
-                "workshop_date": "2022-06-14",
-                "attendees": [
-                    "Jan Sch\u00e4dlich"
-                ]
-            }
-        ]
-    }
-]
+{
+    "items": [
+        {
+            "identifier": "803449f4-9a4c-4ecb-8ce4-cebc804fe70a",
+            "firstname": "Jan",
+            "lastname": "Sch\u00e4dlich",
+            "email": "jschadlich@eos-uptrade.de",
+            "workshops": [
+                {
+                    "identifier": "abba667a-96ae-4f75-9b71-97819b682e8d",
+                    "title": "RESTful Webservices in Symfony",
+                    "workshop_date": "2022-06-14",
+                    "attendees": [
+                        "Jan Sch\u00e4dlich"
+                    ]
+                }
+            ]
+        }
+    ],
+    "total": 1,
+    "count": 1
+}
