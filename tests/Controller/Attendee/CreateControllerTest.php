@@ -38,4 +38,28 @@ EOT
         static::assertSame('Paulsen', $expectedAttendee->getLastname());
         static::assertSame('paul@paulsen.de', $expectedAttendee->getEmail());
     }
+
+    /**
+     * @dataProvider provideUnprocessableAttendeeData
+     */
+    public function test_it_should_throw_an_UnprocessableEntityHttpException(string $requestBody): void
+    {
+        $this->browser->request('POST', '/attendees', [], [], [], $requestBody);
+
+        static::assertResponseStatusCodeSame(422);
+        static::assertStringContainsString(
+            'UnprocessableEntityHttpException',
+            $this->browser->getResponse()->getContent()
+        );
+    }
+
+    public function provideUnprocessableAttendeeData(): \Generator
+    {
+        yield 'no data' => [''];
+        yield 'empty data' => ['{}'];
+        yield 'missing firstname' => ['{"lastname": "Paulsen", "email": "paul@paulsen.de"}'];
+        yield 'missing lastname' => ['{"firstname": "Paul", "email": "paul@paulsen.de"}'];
+        yield 'missing email' => ['{"firstname": "Paul", "lastname": "Paulsen"}'];
+        yield 'wrong email' => ['{"firstname": "Paul", "lastname": "Paulsen", "email": "paulpaulsende"}'];
+    }
 }
