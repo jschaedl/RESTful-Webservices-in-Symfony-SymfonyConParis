@@ -8,9 +8,11 @@ use App\Repository\WorkshopRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use JetBrains\PhpStorm\ArrayShape;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
+use Symfony\Component\Serializer\Annotation as Serializer;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Webmozart\Assert\Assert;
 
 #[ORM\Entity(repositoryClass: WorkshopRepository::class)]
@@ -28,6 +30,8 @@ class Workshop
     private string $title;
 
     #[ORM\Column(type: 'datetime_immutable', length: 255)]
+    #[Serializer\Context([DateTimeNormalizer::FORMAT_KEY => 'Y-m-d'])]
+    // configuring the date format via AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER in the serializer context is also possible
     private \DateTimeImmutable $workshopDate;
 
     #[ORM\ManyToMany(targetEntity: Attendee::class, inversedBy: 'workshops')]
@@ -90,18 +94,5 @@ class Workshop
         }
 
         return $this;
-    }
-
-    #[ArrayShape(['identifier' => "\Ramsey\Uuid\UuidInterface", 'title' => 'string', 'workshop_date' => 'string', 'attendees' => 'array[]'])]
-    public function toArray(): array
-    {
-        return [
-            'identifier' => $this->identifier,
-            'title' => $this->getTitle(),
-            'workshop_date' => $this->getWorkshopDate()->format('Y-m-d'),
-            'attendees' => array_map(function (Attendee $attendee): array {
-                return $attendee->toArray();
-            }, $this->getAttendees()),
-        ];
     }
 }

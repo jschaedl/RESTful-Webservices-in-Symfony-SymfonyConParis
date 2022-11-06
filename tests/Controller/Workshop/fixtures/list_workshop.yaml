@@ -1,3 +1,9 @@
+App\Entity\Attendee:
+    attendee_1:
+        __construct: [ '2a451d60-2fef-437b-838e-10edb2ade8eb', 'Jan', 'Schädlich', 'jschadlich@eos-uptrade.de' ]
+
 App\Entity\Workshop:
     workshop_1:
         __construct: [ 'ef6e13ef-f601-4e74-bae8-bdf8f41cd8db', 'RESTful Webservices in Symfony', <(new \DateTimeImmutable('2022-06-14'))> ]
+        __calls:
+            - addAttendee: [ '@attendee_1' ]

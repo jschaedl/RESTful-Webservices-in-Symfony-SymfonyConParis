@@ -8,7 +8,6 @@ use App\Repository\AttendeeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use JetBrains\PhpStorm\ArrayShape;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Webmozart\Assert\Assert;
@@ -119,16 +118,5 @@ class Attendee
         }
 
         return $this;
-    }
-
-    #[ArrayShape(['identifier' => "\Ramsey\Uuid\UuidInterface", 'firstname' => 'string', 'lastname' => 'string', 'email' => 'string'])]
-    public function toArray(): array
-    {
-        return [
-            'identifier' => $this->identifier,
-            'firstname' => $this->firstname,
-            'lastname' => $this->lastname,
-            'email' => $this->email,
-        ];
     }
 }
