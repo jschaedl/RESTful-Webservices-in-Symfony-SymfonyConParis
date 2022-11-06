@@ -10,7 +10,7 @@ final class JsonHalEncoder extends JsonEncoder
 {
     public const FORMAT = 'jsonhal';
 
-    public function supportsEncoding(string $format)
+    public function supportsEncoding(string $format): bool
     {
         return self::FORMAT === $format;
     }

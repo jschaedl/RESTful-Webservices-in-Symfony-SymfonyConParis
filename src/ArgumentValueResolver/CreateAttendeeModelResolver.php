@@ -8,8 +8,8 @@ use App\Domain\Model\CreateAttendeeModel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
 use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
-use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Validator\Exception\ValidationFailedException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 final class CreateAttendeeModelResolver implements ArgumentValueResolverInterface
@@ -30,21 +30,16 @@ final class CreateAttendeeModelResolver implements ArgumentValueResolverInterfac
      */
     public function resolve(Request $request, ArgumentMetadata $argument)
     {
-        try {
-            $model = $this->serializer->deserialize(
-                $request->getContent(),
-                CreateAttendeeModel::class,
-                $request->getRequestFormat(),
-            );
-        } catch (\Exception $exception) {
-            throw new UnprocessableEntityHttpException();
-        }
+        $model = $this->serializer->deserialize(
+            $request->getContent(),
+            CreateAttendeeModel::class,
+            $request->getRequestFormat(),
+        );
 
         $validationErrors = $this->validator->validate($model);
 
         if (\count($validationErrors) > 0) {
-            // throw a UnprocessableEntityHttpException for now, we will introduce proper ApiExceptions later
-            throw new UnprocessableEntityHttpException();
+            throw new ValidationFailedException($model, $validationErrors);
         }
 
         yield $model;
