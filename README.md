@@ -3,7 +3,7 @@
 Trainer: [Jan Schädlich](http://janschaedlich.de)
 
 > Nowadays RESTful APIs are powering the web and are used in almost every web application.
-> In this workshop you will learn the fundamental principles of REST and how you can implement a RESTful application using Symfony. 
+> In this workshop you will learn the fundamental principles of REST and how you can implement a RESTful application using Symfony.
 >
 > We will start with the basics of REST and will cover some more advanced topics like Serialization, Content-Negotiation, Security afterwards.
 > Besides all the theory you can deepen your learnings on every topic while doing the provided coding challenges.
@@ -29,7 +29,7 @@ The code provided within this repository is not production-ready. It was created
 
 - Symfony Binary: https://symfony.com/download
 - Postman App: https://www.getpostman.com/downloads
-  
+
 ## Coding Challenge
 
 For a 2-day conference, workshops and participants must be recorded.

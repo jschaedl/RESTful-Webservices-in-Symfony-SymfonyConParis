@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Serializer;
 
 use App\Entity\Workshop;
+use App\Negotiation\RequestFormat;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\ContextAwareNormalizerInterface;
@@ -39,7 +40,11 @@ final class WorkshopNormalizer implements ContextAwareNormalizerInterface
 
         $data = $this->normalizer->normalize($object, $format, $context);
 
-        if (\is_array($data)) {
+        if (!\is_array($data)) {
+            return $data;
+        }
+
+        if (RequestFormat::JSON_HAL === $format) {
             $data['_links']['self']['href'] = $this->urlGenerator->generate('read_workshop', [
                 'identifier' => $object->getIdentifier(),
             ]);

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Pagination;
 
+use App\Negotiation\ContentNegotiator;
+use App\Negotiation\RequestFormat;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -11,7 +13,8 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 abstract class PaginatedCollectionFactory
 {
     public function __construct(
-        private UrlGeneratorInterface $urlGenerator
+        private UrlGeneratorInterface $urlGenerator,
+        private ContentNegotiator $contentNegotiator,
     ) {
     }
 
@@ -40,26 +43,28 @@ abstract class PaginatedCollectionFactory
 
         $paginatedCollection = new PaginatedCollection($paginator->getIterator(), $total);
 
-        $routeName = $this->getRouteName();
+        if ($this->contentNegotiator->isNegotiatedRequestFormat(RequestFormat::JSON_HAL)) {
+            $routeName = $this->getRouteName();
 
-        $paginatedCollection
-            ->addLink('self', $this->urlGenerator->generate($routeName, ['page' => $page, 'size' => $size]));
-
-        if (1 < $pageCount) {
             $paginatedCollection
-                ->addLink('first', $this->urlGenerator->generate($routeName, ['page' => 1, 'size' => $size]))
-                ->addLink('last', $this->urlGenerator->generate($routeName, ['page' => $pageCount, 'size' => $size]))
-            ;
-        }
+                ->addLink('self', $this->urlGenerator->generate($routeName, ['page' => $page, 'size' => $size]));
 
-        if ($page < $pageCount) {
-            $paginatedCollection
-                ->addLink('next', $this->urlGenerator->generate($routeName, ['page' => $page + 1, 'size' => $size]));
-        }
+            if (1 < $pageCount) {
+                $paginatedCollection
+                    ->addLink('first', $this->urlGenerator->generate($routeName, ['page' => 1, 'size' => $size]))
+                    ->addLink('last', $this->urlGenerator->generate($routeName, ['page' => $pageCount, 'size' => $size]))
+                ;
+            }
 
-        if ($page > 1) {
-            $paginatedCollection
-                ->addLink('prev', $this->urlGenerator->generate($routeName, ['page' => $page - 1, 'size' => $size]));
+            if ($page < $pageCount) {
+                $paginatedCollection
+                    ->addLink('next', $this->urlGenerator->generate($routeName, ['page' => $page + 1, 'size' => $size]));
+            }
+
+            if ($page > 1) {
+                $paginatedCollection
+                    ->addLink('prev', $this->urlGenerator->generate($routeName, ['page' => $page - 1, 'size' => $size]));
+            }
         }
 
         return $paginatedCollection;

@@ -26,10 +26,11 @@ final class ListController
             $request->query->getInt('size', 10)
         );
 
-        $serializedAttendeeCollection = $this->serializer->serialize($attendeeCollection, 'json');
+        $serializedAttendeeCollection = $this->serializer->serialize(
+            $attendeeCollection,
+            $request->getRequestFormat()
+        );
 
-        return new Response($serializedAttendeeCollection, Response::HTTP_OK, [
-            'Content-Type' => 'application/json',
-        ]);
+        return new Response($serializedAttendeeCollection, Response::HTTP_OK);
     }
 }
