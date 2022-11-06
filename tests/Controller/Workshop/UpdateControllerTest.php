@@ -19,7 +19,7 @@ class UpdateControllerTest extends ApiTestCase
         $workshopsBefore = static::getContainer()->get(WorkshopRepository::class)->findAll();
         static::assertCount(1, $workshopsBefore);
 
-        $this->browser->request('PUT', '/workshops/74857cb7-ff9e-4976-87e5-168438c3c53e', [], [], [],
+        $this->browser->request('PUT', '/workshops/74857cb7-ff9e-4976-87e5-168438c3c53e', [], [], ['HTTP_Authorization' => 'Bearer '.$this->getUserToken()],
             <<<'EOT'
 {
     "title": "Test Workshop",
@@ -51,7 +51,7 @@ EOT
         $workshopsBefore = static::getContainer()->get(WorkshopRepository::class)->findAll();
         static::assertCount(1, $workshopsBefore);
 
-        $this->browser->request('PUT', '/workshops/74857cb7-ff9e-4976-87e5-168438c3c53e', [], [], [], $requestBody);
+        $this->browser->request('PUT', '/workshops/74857cb7-ff9e-4976-87e5-168438c3c53e', [], [], ['HTTP_Authorization' => 'Bearer '.$this->getUserToken()], $requestBody);
 
         static::assertResponseStatusCodeSame(422);
 

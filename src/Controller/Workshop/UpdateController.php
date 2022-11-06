@@ -7,10 +7,12 @@ namespace App\Controller\Workshop;
 use App\Domain\Model\UpdateWorkshopModel;
 use App\Domain\WorkshopUpdater;
 use App\Entity\Workshop;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[IsGranted('ROLE_USER')]
 #[Route('/workshops/{identifier}', name: 'update_workshop', methods: ['PUT'])]
 final class UpdateController
 {

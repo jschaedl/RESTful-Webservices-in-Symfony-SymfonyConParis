@@ -25,6 +25,7 @@ class ReadControllerTest extends ApiTestCase
 
         $this->browser->request('GET', '/workshops/8acf8f2b-95c1-46e1-85a4-ea6ff88081ce', [], [], [
             'HTTP_ACCEPT' => $httpAcceptHeaderValue,
+            'HTTP_Authorization' => 'Bearer '.$this->getUserToken(),
         ]);
 
         static::assertResponseIsSuccessful();

@@ -19,7 +19,7 @@ class UpdateControllerTest extends ApiTestCase
         $attendeesBefore = static::getContainer()->get(AttendeeRepository::class)->findAll();
         static::assertCount(1, $attendeesBefore);
 
-        $this->browser->request('PUT', '/attendees/b38aa3e4-f9de-4dca-aaeb-3ec36a9feb6c', [], [], [],
+        $this->browser->request('PUT', '/attendees/b38aa3e4-f9de-4dca-aaeb-3ec36a9feb6c', [], [], ['HTTP_Authorization' => 'Bearer '.$this->getUserToken()],
             <<<'EOT'
 {
     "firstname": "Paul",
@@ -53,7 +53,7 @@ EOT
         $attendeesBefore = static::getContainer()->get(AttendeeRepository::class)->findAll();
         static::assertCount(1, $attendeesBefore);
 
-        $this->browser->request('PUT', '/attendees/b38aa3e4-f9de-4dca-aaeb-3ec36a9feb6c', [], [], [], $requestBody);
+        $this->browser->request('PUT', '/attendees/b38aa3e4-f9de-4dca-aaeb-3ec36a9feb6c', [], [], ['HTTP_Authorization' => 'Bearer '.$this->getUserToken()], $requestBody);
 
         static::assertResponseStatusCodeSame(422);
 

@@ -28,4 +28,24 @@ class ApiTestCase extends WebTestCase
         $schemaTool->dropSchema($this->entityManager->getMetadataFactory()->getAllMetadata());
         $schemaTool->createSchema($this->entityManager->getMetadataFactory()->getAllMetadata());
     }
+
+    protected function getUserToken(): string
+    {
+        $this->browser->request('POST', '/token', [], [], [
+            'PHP_AUTH_USER' => 'api_user',
+            'PHP_AUTH_PW' => 'api_user',
+        ]);
+
+        return json_decode($this->browser->getResponse()->getContent(), true)['token'];
+    }
+
+    protected function getAdminToken(): string
+    {
+        $this->browser->request('POST', '/token', [], [], [
+            'PHP_AUTH_USER' => 'api_admin',
+            'PHP_AUTH_PW' => 'api_admin',
+        ]);
+
+        return json_decode($this->browser->getResponse()->getContent(), true)['token'];
+    }
 }
