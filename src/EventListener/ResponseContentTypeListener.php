@@ -14,6 +14,11 @@ class ResponseContentTypeListener
     public function onKernelResponse(ResponseEvent $event): void
     {
         $request = $event->getRequest();
+
+        if ('app.swagger_ui' === $request->get('_route')) {
+            return;
+        }
+
         $response = $event->getResponse();
 
         $response->headers->set(

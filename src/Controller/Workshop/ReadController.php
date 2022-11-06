@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Workshop;
 
 use App\Entity\Workshop;
+use OpenApi\Annotations as OA;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,6 +21,9 @@ final class ReadController
     ) {
     }
 
+    /**
+     * @OA\Get(tags={"Workshop"})
+     */
     public function __invoke(Request $request, Workshop $workshop): Response
     {
         $serializedWorkshop = $this->serializer->serialize(

@@ -169,6 +169,19 @@
             "config/packages/test/nelmio_alice.yaml"
         ]
     },
+    "nelmio/api-doc-bundle": {
+        "version": "4.6",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "c8e0c38e1a280ab9e37587a8fa32b251d5bc1c94"
+        },
+        "files": [
+            "config/packages/nelmio_api_doc.yaml",
+            "config/routes/nelmio_api_doc.yaml"
+        ]
+    },
     "nikic/php-parser": {
         "version": "v4.13.1"
     },
@@ -314,6 +327,9 @@
     },
     "spatie/phpunit-snapshot-assertions": {
         "version": "4.2.7"
+    },
+    "symfony/asset": {
+        "version": "v5.4.0"
     },
     "symfony/browser-kit": {
         "version": "v5.4.0-RC1"
@@ -521,6 +537,22 @@
     "symfony/translation-contracts": {
         "version": "v3.0.0"
     },
+    "symfony/twig-bridge": {
+        "version": "v5.4.0"
+    },
+    "symfony/twig-bundle": {
+        "version": "5.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "5.4",
+            "ref": "bffbb8f1a849736e64006735afae730cb428b6ff"
+        },
+        "files": [
+            "config/packages/twig.yaml",
+            "templates/base.html.twig"
+        ]
+    },
     "symfony/validator": {
         "version": "5.4",
         "recipe": {
@@ -555,10 +587,19 @@
     "theseer/tokenizer": {
         "version": "1.2.1"
     },
+    "twig/extra-bundle": {
+        "version": "v3.3.4"
+    },
+    "twig/twig": {
+        "version": "v3.3.4"
+    },
     "webmozart/assert": {
         "version": "1.10.0"
     },
     "willdurand/negotiation": {
         "version": "3.0.0"
+    },
+    "zircote/swagger-php": {
+        "version": "3.3.2"
     }
 }

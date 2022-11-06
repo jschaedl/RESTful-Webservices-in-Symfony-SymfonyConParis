@@ -7,6 +7,7 @@ namespace App\Controller\Workshop;
 use App\Entity\Attendee;
 use App\Entity\Workshop;
 use Doctrine\ORM\EntityManagerInterface;
+use OpenApi\Annotations as OA;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,6 +24,9 @@ class RemoveAttendeeFromWorkshopController
     ) {
     }
 
+    /**
+     * @OA\Post(tags={"Workshop"})
+     */
     public function __invoke(Request $request, Workshop $workshop, Attendee $attendee)
     {
         $workshop->removeAttendee($attendee);

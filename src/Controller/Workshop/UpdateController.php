@@ -7,6 +7,7 @@ namespace App\Controller\Workshop;
 use App\Domain\Model\UpdateWorkshopModel;
 use App\Domain\WorkshopUpdater;
 use App\Entity\Workshop;
+use OpenApi\Annotations as OA;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,6 +22,9 @@ final class UpdateController
     ) {
     }
 
+    /**
+     * @OA\Put(tags={"Workshop"})
+     */
     public function __invoke(Request $request, Workshop $workshop, UpdateWorkshopModel $updateWorkshopModel)
     {
         $this->workshopUpdater->update($workshop, $updateWorkshopModel);

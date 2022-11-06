@@ -6,13 +6,13 @@ namespace App\Pagination;
 
 use Symfony\Component\Serializer\Annotation\SerializedName;
 
-final class PaginatedCollection
+class PaginatedCollection
 {
-    private array $items;
-    private int $total;
-    private int $count;
+    protected array $items;
+    protected int $total;
+    protected int $count;
 
-    private array $links;
+    protected array $links;
 
     public function __construct(\Iterator $items, int $total)
     {

@@ -1,0 +1,11 @@
+nelmio_api_doc:
+    documentation:
+        info:
+            title: RESTful Webservices in Symfony
+            description: "SymfonyWorld Online Winter Edition Workshop: RESTful Webservices in Symfony!"
+            version: 1.0.0
+    areas:
+        path_patterns:
+            - ^/api(?!/doc$) # Accepts routes under /api except /api/doc
+            - ^/workshops
+            - ^/attendees

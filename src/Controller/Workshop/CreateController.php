@@ -6,6 +6,8 @@ namespace App\Controller\Workshop;
 
 use App\Domain\Model\CreateWorkshopModel;
 use App\Domain\WorkshopCreator;
+use Nelmio\ApiDocBundle\Annotation\Model;
+use OpenApi\Annotations as OA;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,6 +26,20 @@ final class CreateController
     ) {
     }
 
+    /**
+     * @OA\Post(
+     *     tags={"Workshop"},
+     *     summary="Creates a workshop.",
+     *     description="Creates a workshop.",
+     *     @OA\RequestBody(
+     *          @Model(type=CreateWorkshopModel::class)
+     *     ),
+     *     @OA\Response(
+     *          description="Returns the created workshop.",
+     *          response=201
+     *     )
+     * )
+     */
     public function __invoke(Request $request, CreateWorkshopModel $createWorkshopModel)
     {
         $createdWorkshop = $this->workshopCreator->create($createWorkshopModel);

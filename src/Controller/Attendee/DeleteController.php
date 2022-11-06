@@ -6,6 +6,7 @@ namespace App\Controller\Attendee;
 
 use App\Domain\AttendeeRemover;
 use App\Entity\Attendee;
+use OpenApi\Annotations as OA;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,6 +21,9 @@ class DeleteController
     ) {
     }
 
+    /**
+     * @OA\Delete(tags={"Attendee"})
+     */
     public function __invoke(Request $request, Attendee $attendee)
     {
         $this->attendeeRemover->remove($attendee);
