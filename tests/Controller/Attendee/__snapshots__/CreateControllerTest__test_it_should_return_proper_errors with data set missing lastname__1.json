@@ -1,8 +1,0 @@
-{
-    "errors": [
-        {
-            "message": "Validation failed.",
-            "detail": "lastname: This value should not be blank."
-        }
-    ]
-}
