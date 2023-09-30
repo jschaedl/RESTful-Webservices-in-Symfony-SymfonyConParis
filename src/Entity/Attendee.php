@@ -32,19 +32,34 @@ class Attendee
     private string $lastname;
 
     #[ORM\Column(type: 'string', length: 255)]
+    private string $name;
+
+    #[ORM\Column(type: 'string', length: 255)]
     private string $email;
 
     #[ORM\ManyToMany(targetEntity: Workshop::class, inversedBy: 'attendees')]
     private Collection $workshops;
 
-    public function __construct(string $identifier, string $firstname, string $lastname, string $email)
+    public function __construct(string $identifier, string $firstname, string $lastname, string $name, string $email)
     {
+        if ((!empty($firstname) || !empty($lastname)) && empty($name)) {
+            @trigger_error('Passing values for argument "$firstname" or "$lastname" is deprecated. Pass a value for argument "$name" instead.', E_USER_DEPRECATED);
+        }
+
         Assert::uuid($identifier, 'Argument $identifier is not a valid UUID: %s');
+
+        if ((empty($firstname) || empty($lastname)) && empty($name)) {
+            throw new \InvalidArgumentException('Passing values for argument "$firstname" and "$lastname" is deprecated. Pass a value for argument "$name" instead.');
+        }
+
         Assert::email($email);
 
         $this->identifier = Uuid::fromString($identifier);
         $this->firstname = $firstname;
         $this->lastname = $lastname;
+
+        $this->name = empty($name) ? $firstname.' '.$lastname : $name;
+
         $this->email = $email;
 
         $this->workshops = new ArrayCollection();
@@ -62,38 +77,26 @@ class Attendee
 
     public function getFirstname(): string
     {
+        @trigger_error('Calling Attendee::getFirstname() is deprecated. Use Attendee::getName()', E_USER_DEPRECATED);
+
         return $this->firstname;
-    }
-
-    public function changeFirstname(string $firstname): self
-    {
-        $this->firstname = $firstname;
-
-        return $this;
     }
 
     public function getLastname(): string
     {
+        @trigger_error('Calling Attendee::getLastname() is deprecated. Use Attendee::getName()', E_USER_DEPRECATED);
+
         return $this->lastname;
     }
 
-    public function changeLastname(string $lastname): self
+    public function getName(): string
     {
-        $this->lastname = $lastname;
-
-        return $this;
+        return $this->name;
     }
 
     public function getEmail(): string
     {
         return $this->email;
-    }
-
-    public function changeEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
     }
 
     /**
@@ -134,12 +137,21 @@ class Attendee
 
     public function updateFirstname(string $firstname)
     {
+        @trigger_error('Calling Attendee::updateFirstname() is deprecated. Use Attendee::updateName()', E_USER_DEPRECATED);
+
         $this->firstname = $firstname;
     }
 
     public function updateLastname(string $lastname)
     {
+        @trigger_error('Calling Attendee::updateLastname() is deprecated. Use Attendee::updateName()', E_USER_DEPRECATED);
+
         $this->lastname = $lastname;
+    }
+
+    public function updateName(string $name)
+    {
+        $this->name = $name;
     }
 
     public function updateEmail(string $email)

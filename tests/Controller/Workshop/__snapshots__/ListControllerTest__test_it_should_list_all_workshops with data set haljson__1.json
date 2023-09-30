@@ -9,6 +9,7 @@
                     "identifier": "2a451d60-2fef-437b-838e-10edb2ade8eb",
                     "firstname": "Jan",
                     "lastname": "Sch\u00e4dlich",
+                    "name": "Jan Sch\u00e4dlich",
                     "email": "jschadlich@eos-uptrade.de",
                     "workshops": [
                         "RESTful Webservices in Symfony"

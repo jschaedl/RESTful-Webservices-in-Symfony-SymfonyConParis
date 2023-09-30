@@ -3,10 +3,6 @@
         {
             "message": "Validation failed.",
             "detail": "firstname: Passing values for fields \"$firstname\" and \"$lastname\" is deprecated. Pass a value for field \"$name\" instead."
-        },
-        {
-            "message": "Validation failed.",
-            "detail": "email: This value should not be blank."
         }
     ]
 }

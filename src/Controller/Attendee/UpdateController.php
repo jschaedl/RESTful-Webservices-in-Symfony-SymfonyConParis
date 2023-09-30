@@ -23,12 +23,18 @@ final class UpdateController
     }
 
     /**
-     * @OA\Put(tags={"Attendee"})
+     * @OA\Put(
+     *     tags={"Attendee"},
+     *     deprecated=true,
+     *     description="This endpoint is deprecated, please don't rely on it anymore."
+     * )
      */
     public function __invoke(Request $request, Attendee $attendee, UpdateAttendeeModel $updateAttendeeModel)
     {
         $this->attendeeUpdater->update($attendee, $updateAttendeeModel);
 
-        return new Response(null, Response::HTTP_NO_CONTENT);
+        return new Response(null, Response::HTTP_NO_CONTENT, [
+            'Sunset' => (new \DateTime())->modify('+ 1 year')->format(DATE_RFC7231), // HTTP Date by RFC 7231
+        ]);
     }
 }
